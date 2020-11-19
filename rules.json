@@ -1,0 +1,45 @@
+[
+  {
+    "if": {
+      "engines": "4",
+      "manufacturer": "Boeing"
+    },
+    "then": {
+      "aircraft": "Boeing 747"
+    }
+  },
+  {
+    "if": {
+      "engines": "2",
+      "manufacturer": "Boeing"
+    },
+    "then": {
+      "aircraft": "Boeing 737"
+    }
+  },
+  {
+    "if": {
+      "engines": "4",
+      "manufacturer": "Airbus"
+    },
+    "then": {
+      "aircraft": "Airbus A380"
+    }
+  },
+  {
+    "if": {
+      "manufacturer_location": "USA"
+    },
+    "then": {
+      "manufacturer": "Boeing"
+    }
+  },
+  {
+    "if": {
+      "manufacturer_location": "Europe"
+    },
+    "then": {
+      "manufacturer": "Airbus"
+    }
+  }
+]
