@@ -1,7 +1,7 @@
 <div class="justify-content-center">
   <%= form_with(url: quizzes_path, method: "post") do %>
     <%= label_tag(:goal, "Search for:") %>
-    <%= select_tag(:goal, options_for_select([%w[Aircraft aircraft], %w[Manufacturer manufacturer]], 'aircraft')) %>
+    <%= select_tag(:goal, options_for_select([%w[Aircraft aircraft], %w[Manufacturer manufacturer], %w[Engine engine_type]], 'aircraft')) %>
     <%= submit_tag('Start new quest') %>
   <% end %>
 </div>

@@ -26,7 +26,7 @@
       "engine_type": "Turboprop"
     },
     "then": {
-      "aircraft": "British Aerospace BAe-146"
+      "aircraft": "De Havilland Canada Dash 7"
     }
   },
   {
@@ -110,8 +110,7 @@
   {
     "if": {
       "engines": "4",
-      "engine_type": "Turbojet",
-      "manufacturer": "Boeing"
+      "engine_type": "Turbojet"
     },
     "then": {
       "aircraft": "Boeing 707"
@@ -121,7 +120,8 @@
     "if": {
       "engines": "2",
       "engine_type": "Turbofan",
-      "engines_is_not_round": "Yes"
+      "wide_body": "No",
+      "engine_is_not_round": "Yes"
     },
     "then": {
       "aircraft": "Boeing 737"
@@ -131,7 +131,59 @@
     "if": {
       "engines": "2",
       "engine_type": "Turbofan",
-      "engines_is_not_round": "No"
+      "wide_body": "Yes",
+      "engine_has_chevrons": "Yes",
+      "cockpit_glazing_has_corners": "Yes"
+    },
+    "then": {
+      "aircraft": "Boeing 787"
+    }
+  },
+  {
+    "if": {
+      "engines": "2",
+      "engine_type": "Turbofan",
+      "wide_body": "Yes",
+      "engine_has_chevrons": "No",
+      "cockpit_glazing_has_corners": "Yes",
+      "wheels_on_the_main_landing_gear": "2"
+    },
+    "then": {
+      "aircraft": "Boeing 767"
+    }
+  },
+  {
+    "if": {
+      "engines": "2",
+      "engine_type": "Turbofan",
+      "wide_body": "Yes",
+      "engine_has_chevrons": "No",
+      "cockpit_glazing_has_corners": "Yes",
+      "wheels_on_the_main_landing_gear": "3"
+    },
+    "then": {
+      "aircraft": "Boeing 777"
+    }
+  },
+  {
+    "if": {
+      "engines": "2",
+      "engine_type": "Turbofan",
+      "wide_body": "Yes",
+      "cockpit_glazing_has_corners": "No",
+      "engine_has_chevrons": "No",
+      "wheels_on_the_main_landing_gear": "3"
+    },
+    "then": {
+      "aircraft": "Airbus A350"
+    }
+  },
+  {
+    "if": {
+      "engines": "2",
+      "engine_type": "Turbofan",
+      "wide_body": "No",
+      "engine_is_not_round": "No"
     },
     "then": {
       "aircraft": "Airbus A320"
@@ -152,8 +204,7 @@
     "if": {
       "engines": "4",
       "engine_type": "Turbofan",
-      "double_deck": "No",
-      "manufacturer": "Airbus"
+      "double_deck": "No"
     },
     "then": {
       "aircraft": "Airbus A340"
@@ -163,7 +214,7 @@
     "if": {
       "engines": "3",
       "engine_type": "Turbofan",
-      "wide-body": "Yes",
+      "wide_body": "Yes",
       "second_engine_over_body": "Yes"
     },
     "then": {
@@ -174,7 +225,7 @@
     "if": {
       "engines": "3",
       "engine_type": "Turbofan",
-      "wide-body": "Yes",
+      "wide_body": "Yes",
       "second_engine_over_body": "No"
     },
     "then": {
@@ -185,7 +236,7 @@
     "if": {
       "engines": "3",
       "engine_type": "Turbofan",
-      "wide-body": "No",
+      "wide_body": "No",
       "wheels_on_the_main_landing_gear": "1"
     },
     "then": {
@@ -196,7 +247,7 @@
     "if": {
       "engines": "3",
       "engine_type": "Turbofan",
-      "wide-body": "No",
+      "wide_body": "No",
       "wheels_on_the_main_landing_gear": "3"
     },
     "then": {

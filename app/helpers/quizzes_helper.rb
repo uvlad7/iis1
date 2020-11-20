@@ -11,7 +11,7 @@ module QuizzesHelper
     elsif quiz.goals_stack.any? && !question
       "<h1>I don't know</h1><div><a href='/'> Start new quest </a></div>".html_safe
     else
-      "<h1>It's #{quiz.context_stack['aircraft'] || quiz.context_stack['manufacturer']}</h1><div><a href='/'> Start new quest </a></div>".html_safe
+      "<h1>It's #{quiz.context_stack['aircraft'] || quiz.context_stack['engine_type'] || quiz.context_stack['manufacturer']}</h1><div><a href='/'> Start new quest </a></div>".html_safe
     end
   end
 end
