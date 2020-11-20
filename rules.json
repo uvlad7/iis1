@@ -2,6 +2,7 @@
   {
     "if": {
       "engines": "4",
+      "engine_type": "turbofan",
       "manufacturer": "Boeing"
     },
     "then": {
@@ -11,6 +12,7 @@
   {
     "if": {
       "engines": "2",
+      "engine_type": "turbofan",
       "manufacturer": "Boeing"
     },
     "then": {
@@ -19,7 +21,18 @@
   },
   {
     "if": {
+      "engines": "2",
+      "engine_type": "turbofan",
+      "manufacturer": "Airbus"
+    },
+    "then": {
+      "aircraft": "Airbus A320"
+    }
+  },
+  {
+    "if": {
       "engines": "4",
+      "engine_type": "turbofan",
       "manufacturer": "Airbus"
     },
     "then": {

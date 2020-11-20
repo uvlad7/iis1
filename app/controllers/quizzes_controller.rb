@@ -20,43 +20,46 @@ class QuizzesController < ApplicationController
 
   def analyze_rules(quiz)
     loop do
-      new_solved_rules, new_context_stack = [], {}
+      new_context_stack = {}
       rules.each_with_index do |rule, index|
-        next if quiz.rejected_rules.include?(index.to_s)
-        if (rule['if'].keys - quiz.context_stack.keys).empty?
-          if (rule['if'].to_a - quiz.context_stack.to_a).empty?
-            new_context_stack.merge!(rule['then'])
-            rule['then'].each { |attr| quiz.goals_stack.delete(attr) }
-          end
-          new_solved_rules.push(index.to_s)
+        next if quiz.rejected_rules.include?(index)
+        if (rule['if'].to_a - quiz.context_stack.to_a).empty?
+          new_context_stack.merge!(rule['then'])
+          quiz.goals_stack -= rule['then'].keys
+          quiz.rejected_rules.push(index)
+          quiz.update!(context_stack: quiz.context_stack.merge(new_context_stack), rejected_rules: quiz.rejected_rules.uniq)
+        elsif (rule['if'].keys.intersection(quiz.context_stack.keys)).find { |k| [rule['if'][k], quiz.context_stack[k]].compact.uniq.size == 2 }
+          quiz.rejected_rules.push(index)
+          quiz.update!(context_stack: quiz.context_stack.merge(new_context_stack), rejected_rules: quiz.rejected_rules.uniq)
         end
-        quiz.save!
-        quiz.update(context_stack: quiz.context_stack.merge(new_context_stack), rejected_rules: quiz.rejected_rules.concat(new_solved_rules).uniq)
-        quiz.reload
       end
       break if new_context_stack.empty? || quiz.goals_stack.empty?
     end
+  end
 
+
+  def question_by_goal(goal)
+    {goal: goal, options: rules.map { |rule| rule['if'][goal] }.compact.uniq.sort}
   end
 
   def get_question_target(quiz)
     goal = quiz.goals_stack.last
-    return {goal: goal, options: rules.map { |rule| rule['if'][goal] }.compact.push("Other")} if questions.find(goal)
+    return question_by_goal(goal) if questions.include?(goal)
     new_goal = nil
     rules.each_with_index do |rule, index|
-      next if quiz.rejected_rules.include?(index.to_s)
+      next if quiz.rejected_rules.include?(index)
       if rule['then'].keys.include?(goal)
-        q = (rule['if'].keys - quiz.context_stack.keys).first
-        if q
-          quiz.update!(goals_stack: quiz.goals_stack.push(q).uniq)
-          return q
+        question = (rule['if'].keys - quiz.context_stack.keys).find { |k| questions.include?(k) }
+        if question
+          quiz.update!(goals_stack: quiz.goals_stack.push(question).uniq)
+          return question_by_goal(question)
         else
           new_goal ||= (rule['if'].keys - quiz.context_stack.keys).first
         end
       end
     end
     return nil unless new_goal
-    quiz.update!(goals_stack: (quiz.goals_stack + [new_goal]))
+    quiz.update!(goals_stack: (quiz.goals_stack.push(new_goal)))
     get_question_target(quiz)
   end
 

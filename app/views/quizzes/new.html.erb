@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-center">
+<div class="justify-content-center">
   <%= form_with(url: quizzes_path, method: "post") do %>
     <%= label_tag(:goal, "Search for:") %>
     <%= select_tag(:goal, options_for_select([%w[Aircraft aircraft], %w[Manufacturer manufacturer]], 'aircraft')) %>
