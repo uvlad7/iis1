@@ -39,7 +39,9 @@ class QuizzesController < ApplicationController
 
 
   def question_by_goal(goal)
-    {goal: goal, options: rules.map { |rule| rule['if'][goal] }.compact.uniq.sort}
+    qu = {goal: goal, options: rules.map { |rule| rule['if'][goal] }.compact.uniq.sort}
+    qu[:options] = %w[Yes No] if qu[:options].size == 1 && %w[Yes No].include?(qu[:options].first)
+    qu
   end
 
   def get_question_target(quiz)

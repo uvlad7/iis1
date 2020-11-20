@@ -2,8 +2,9 @@
   {
     "if": {
       "engines": "4",
-      "engine_type": "turbofan",
-      "manufacturer": "Boeing"
+      "engine_type": "Turbofan",
+      "double_deck": "Yes",
+      "full_double_deck": "No"
     },
     "then": {
       "aircraft": "Boeing 747"
@@ -11,9 +12,116 @@
   },
   {
     "if": {
-      "engines": "2",
-      "engine_type": "turbofan",
+      "engines": "4",
+      "engine_type": "Turbofan",
+      "high_wing_scheme": "Yes"
+    },
+    "then": {
+      "aircraft": "British Aerospace BAe-146"
+    }
+  },
+  {
+    "if": {
+      "engines": "4",
+      "engine_type": "Turboprop"
+    },
+    "then": {
+      "aircraft": "British Aerospace BAe-146"
+    }
+  },
+  {
+    "if": {
+      "wing_over_body": "Yes"
+    },
+    "then": {
+      "high_wing_scheme": "Yes"
+    }
+  },
+  {
+    "if": {
+      "wing_over_body": "No"
+    },
+    "then": {
+      "high_wing_scheme": "No"
+    }
+  },
+  {
+    "if": {
+      "engine_has_propeller": "Yes",
+      "engine_has_jet": "Yes"
+    },
+    "then": {
+      "engine_type": "Turboprop"
+    }
+  },
+  {
+    "if": {
+      "engine_has_propeller": "Yes",
+      "engine_has_jet": "No"
+    },
+    "then": {
+      "engine_type": "Piston"
+    }
+  },
+  {
+    "if": {
+      "engine_has_propeller": "No",
+      "engine_has_two_jets": "Yes"
+    },
+    "then": {
+      "engine_type": "Turbofan"
+    }
+  },
+  {
+    "if": {
+      "engine_has_propeller": "No",
+      "engine_has_two_jets": "No"
+    },
+    "then": {
+      "engine_type": "Turbojet"
+    }
+  },
+  {
+    "if": {
+      "has_\"hump\"": "Yes",
+      "double_deck": "Yes"
+    },
+    "then": {
+      "full_double_deck": "No"
+    }
+  },
+  {
+    "if": {
+      "has_\"hump\"": "No",
+      "double_deck": "Yes"
+    },
+    "then": {
+      "full_double_deck": "Yes"
+    }
+  },
+  {
+    "if": {
+      "double_deck": "No"
+    },
+    "then": {
+      "full_double_deck": "No"
+    }
+  },
+  {
+    "if": {
+      "engines": "4",
+      "engine_type": "Turbojet",
       "manufacturer": "Boeing"
+    },
+    "then": {
+      "aircraft": "Boeing 707"
+    }
+  },
+  {
+    "if": {
+      "engines": "2",
+      "engine_type": "Turbofan",
+      "engines_is_not_round": "Yes"
     },
     "then": {
       "aircraft": "Boeing 737"
@@ -22,8 +130,8 @@
   {
     "if": {
       "engines": "2",
-      "engine_type": "turbofan",
-      "manufacturer": "Airbus"
+      "engine_type": "Turbofan",
+      "engines_is_not_round": "No"
     },
     "then": {
       "aircraft": "Airbus A320"
@@ -32,8 +140,9 @@
   {
     "if": {
       "engines": "4",
-      "engine_type": "turbofan",
-      "manufacturer": "Airbus"
+      "engine_type": "Turbofan",
+      "double_deck": "Yes",
+      "full_double_deck": "Yes"
     },
     "then": {
       "aircraft": "Airbus A380"
@@ -41,7 +150,63 @@
   },
   {
     "if": {
-      "manufacturer_location": "USA"
+      "engines": "4",
+      "engine_type": "Turbofan",
+      "double_deck": "No",
+      "manufacturer": "Airbus"
+    },
+    "then": {
+      "aircraft": "Airbus A340"
+    }
+  },
+  {
+    "if": {
+      "engines": "3",
+      "engine_type": "Turbofan",
+      "wide-body": "Yes",
+      "second_engine_over_body": "Yes"
+    },
+    "then": {
+      "aircraft": "Douglas DC-10"
+    }
+  },
+  {
+    "if": {
+      "engines": "3",
+      "engine_type": "Turbofan",
+      "wide-body": "Yes",
+      "second_engine_over_body": "No"
+    },
+    "then": {
+      "aircraft": "Lockheed L-1011 TriStar"
+    }
+  },
+  {
+    "if": {
+      "engines": "3",
+      "engine_type": "Turbofan",
+      "wide-body": "No",
+      "wheels_on_the_main_landing_gear": "1"
+    },
+    "then": {
+      "aircraft": "Boeing 727"
+    }
+  },
+  {
+    "if": {
+      "engines": "3",
+      "engine_type": "Turbofan",
+      "wide-body": "No",
+      "wheels_on_the_main_landing_gear": "3"
+    },
+    "then": {
+      "aircraft": "Tupolev Tu-154"
+    }
+  },
+  {
+    "if": {
+      "location": "America",
+      "defunct": "No"
     },
     "then": {
       "manufacturer": "Boeing"
@@ -49,10 +214,40 @@
   },
   {
     "if": {
-      "manufacturer_location": "Europe"
+      "location": "America",
+      "defunct": "Yes",
+      "acquired_by_\"Boeing\"": "No"
+    },
+    "then": {
+      "manufacturer": "Lockheed"
+    }
+  },
+  {
+    "if": {
+      "location": "America",
+      "defunct": "Yes",
+      "acquired_by_\"Boeing\"": "Yes"
+    },
+    "then": {
+      "manufacturer": "Douglas"
+    }
+  },
+  {
+    "if": {
+      "location": "Europe",
+      "defunct": "No"
     },
     "then": {
       "manufacturer": "Airbus"
+    }
+  },
+  {
+    "if": {
+      "location": "Europe",
+      "defunct": "Yes"
+    },
+    "then": {
+      "manufacturer": "British Aerospace"
     }
   }
 ]

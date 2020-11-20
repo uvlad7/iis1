@@ -2,7 +2,7 @@ module QuizzesHelper
   def show_tag(question, quiz)
     if quiz.goals_stack.any? && question
       form_with(url: quiz_path(quiz.id), method: "patch", local: true) do
-        %Q`#{label_tag(:value, "Select #{question[:goal].split('_').join(" ")}")}
+        %Q`#{label_tag(:value, "#{question[:goal].split('_').join(" ").capitalize}")}
         #{select_tag(:value, options_for_select(question[:options].map {|o| [o, o]}, question[:options].first))}
         #{hidden_field_tag(:attr, question[:goal])}
         #{submit_tag('Submit')}
